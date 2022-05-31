@@ -1,0 +1,45 @@
+<div class="container">
+    <form [formGroup]="bookForm">
+        <div class="row">
+            <div class="row col-sm-6">
+                <h3 class="title">My First http - "Books"</h3>
+                <br><br>
+                <div class="form-group">
+                    <label for="bookid">Book Id</label>
+                    <input type="text" id="bookid" name="bookid" class="form-control" formControlName="bookid">
+                </div>
+                <div class="form-group">
+                    <label for="bookname">Book Name</label>
+                    <input type="text" id="bookname" name="bookname" class="form-control" formControlName="bookname">
+                    <span class="help-block"
+                        *ngIf="!bookForm.get('bookname')?.valid && bookForm.get('bookname')?.touched"></span>
+                </div>
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" id="author" name="author" class="form-control" formControlName="author">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-info" [disabled]="!bookForm.valid" (click)="onPushBook()">Push Book</button>
+                    <button type="submit" class="btn btn-info" [disabled]="!saveLogin" (click)="onSave()">Save Book</button>
+                    <button type="submit" class="btn btn-info"  (click)="onGet()">Get Book List</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row col-sm-6">
+                <table class="table">
+                    <tr>
+                        <td>Book Id</td>
+                        <td>Book Name</td>
+                        <td>Author</td>
+                    </tr>
+                    <tr *ngFor ="let obj of myBooks">
+                        <td>{{obj.bookid}}</td>
+                        <td>{{obj.bookname}}</td>
+                        <td>{{obj.author}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</form>
+</div>
